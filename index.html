@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake and Ladder Game</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: 50px auto;
+    }
+    th, td {
+      border: 1px solid black;
+      width: 50px;
+      height: 50px;
+    }
+    .player1 {
+      background-color: red;
+      color: white;
+    }
+    .player2 {
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Snake and Ladder Game</h1>
+  <table>
+    <tr>
+      <th>100</th><th>99</th><th>98</th><th>97</th><th>96</th><th>95</th><th>94</th><th>93</th><th>92</th><th>91</th>
+    </tr>
+    <!-- rest of the table rows -->
+  </table>
+  
+  <p>Player <span id="playerTurn">1</span>'s turn</p>
+  <p>Player 1 position: <span id="player1Position">1</span></p>
+  <p>Player 2 position: <span id="player2Position">1</span></p>
+
+  <button onclick="rollDice()">Roll Dice</button>
+  <button onclick="resetGame()">Reset Game</button>
+
+  <script>
+    const snakesAndLadders = {
+      // Define the snakes and ladders mapping
+    };
+
+    let players = {
+      player1: 1,
+      player2: 1
+    };
+
+    let currentPlayer = "player1";
+
+    const rollDice = () => {
+      const diceRoll = Math.floor(Math.random() * 6) + 1;
+
+      document.getElementById("playerTurn").innerText = currentPlayer === "player1" ? "2" : "1";
+
+      movePlayer(currentPlayer, diceRoll);
+
+      if (players[currentPlayer] === 100) {
+        alert(`Player ${currentPlayer === "player1" ? "1" : "2"} wins!`);
+      } else {
+        currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
+      }
+    };
+
+    const movePlayer = (player, steps) => {
+      players[player] += steps;
+
+      // Check for snakes and ladders
+    };
+
+    const resetGame = () => {
+      players = {
+        player1: 1,
+        player2: 1
+      };
+      currentPlayer = "player1";
+      document.getElementById("playerTurn").innerText = "1";
+      updatePlayerPositions();
+    };
+
+    const updatePlayerPositions = () => {
+      document.getElementById("player1Position").innerText = players["player1"];
+      document.getElementById("player2Position").innerText = players["player2"];
+    };
+
+    const renderBoard = () => {
+      // Render the 10x10 game board
+    };
+
+    renderBoard();
+  </script>
+</body>
+</html>
